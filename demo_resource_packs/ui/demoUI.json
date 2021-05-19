@@ -1,0 +1,95 @@
+{
+   "buttonPanel": {
+      "anchor_from" : "center",
+      "anchor_to" : "center",
+      "controls" : [
+         {
+            "button_common@demoUI.button_common" : {}
+         }
+      ],
+      "layer" : 1,
+      "offset" : ["", "-2%" ],
+      "size" : [ "100%", "82%" ],
+      "type" : "panel",
+      "visible" : true
+   },
+
+   "button_common@common.button" : {
+      "$default_color" : [ 1, 1, 1 ],
+      "$default_texture" : "textures/ui/classic_button",
+      "$hover_texture" : "textures/ui/classic_button",
+      "$labelText" : "点击",
+      "$label_font_size" : "normal",
+      "$nine_slice_buttom" : 0,
+      "$nine_slice_left" : 0,
+      "$nine_slice_right" : 0,
+      "$nine_slice_top" : 0,
+      "$pressed_button_name" : "%demoUI.on_common_click",
+      "$text_offset" : [ 0, 0 ],
+      "anchor_from" : "center",
+      "anchor_to" : "center",
+      "controls" : [
+         {
+            "default" : {
+               "is_new_nine_slice" : true,
+               "layer" : 10,
+               "nine_slice_buttom" : "$nine_slice_buttom",
+               "nine_slice_left" : "$nine_slice_left",
+               "nine_slice_right" : "$nine_slice_right",
+               "nine_slice_top" : "$nine_slice_top",
+               "texture" : "$default_texture",
+               "type" : "image"
+            }
+         },
+         {
+            "hover" : {
+               "is_new_nine_slice" : true,
+               "layer" : 10,
+               "nine_slice_buttom" : "$nine_slice_buttom",
+               "nine_slice_left" : "$nine_slice_left",
+               "nine_slice_right" : "$nine_slice_right",
+               "nine_slice_top" : "$nine_slice_top",
+               "texture" : "$hover_texture",
+               "type" : "image"
+            }
+         },
+         {
+            "pressed" : {
+               "is_new_nine_slice" : true,
+               "layer" : 10,
+               "nine_slice_buttom" : "$nine_slice_buttom",
+               "nine_slice_left" : "$nine_slice_left",
+               "nine_slice_right" : "$nine_slice_right",
+               "nine_slice_top" : "$nine_slice_top",
+               "texture" : "$hover_texture",
+               "type" : "image"
+            }
+         },
+         {
+            "button_label" : {
+               "color" : "$default_color",
+               "font_size" : "$label_font_size",
+               "layer" : 13,
+               "max_size" : [ "100%", "100%" ],
+               "offset" : "$text_offset",
+               "shadow" : false,
+               "text" : "$labelText",
+               "type" : "label"
+            }
+         }
+      ],
+      "layer" : 15,
+      "offset" : [0, 0 ],
+      "size" : [ 40, 20 ],
+      "visible" : false
+   },
+
+   "namespace" : "demoUI",
+   "main@common.base_screen" : {
+      "controls" : [
+         {
+            "buttonPanel@demoUI.buttonPanel" : {}
+         }
+      ]
+   }
+}

@@ -1,0 +1,13 @@
+{
+  "format_version": "1.10",
+  "minecraft:item": {
+    "description": {
+      "identifier": "modname:demo_item",
+      "category": "Items"
+    },
+
+    "components": {
+      "minecraft:icon": "mod:demo_item"
+    }
+  }
+}
