@@ -32,6 +32,24 @@ class BaseScreenNode(ScreenNode):
 
     # ———————————— RE:built-in BaseUIControl method ————————————
 
+    # ———— btn ————
+
+    def add_btn_callback(self, path, down=None, up=None, cancel=None, move=None, move_in=None, move_out=None):
+        btn_control = self.GetBaseUIControl(path).asButton()
+        btn_control.AddTouchEventParams({"isSwallow": True})
+        if down:
+            btn_control.SetButtonTouchDownCallback(down)
+        if up:
+            btn_control.SetButtonTouchUpCallback(up)
+        if cancel:
+            btn_control.SetButtonTouchCancelCallback(cancel)
+        if move:
+            btn_control.SetButtonTouchMoveCallback(move)
+        if move_in:
+            btn_control.SetButtonTouchMoveInCallback(move_in)
+        if move_out:
+            btn_control.SetButtonTouchMoveOutCallback(move_out)
+
     # ———— get ————
 
     def get_position(self, path):
