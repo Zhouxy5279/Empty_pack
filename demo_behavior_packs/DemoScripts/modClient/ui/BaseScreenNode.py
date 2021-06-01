@@ -102,3 +102,9 @@ class BaseScreenNode(ScreenNode):
         img_ctrl = self.GetBaseUIControl(path).asImage()
         img_ctrl.SetSpriteClipRatio(1.0 - ratio)
 
+    # ———— special ————
+
+    def set_same_btn_sprite(self, path, img):
+        self.set_sprite(path + '/default', img)
+        self.set_sprite(path + '/hover', img)
+        self.set_sprite(path + '/pressed', img)

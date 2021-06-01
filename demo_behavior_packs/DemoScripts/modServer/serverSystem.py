@@ -32,6 +32,8 @@ class Server(ServerSystem):
                             "OnScriptTickServer", self, self.tick)
         self.ListenForEvent(serverApi.GetEngineNamespace(), serverApi.GetEngineSystemName(),
                             "LoadServerAddonScriptsAfter", self, self.init)
+        self.ListenForEvent(serverApi.GetEngineNamespace(), serverApi.GetEngineSystemName(),
+                            "ServerChatEvent", self, self.chat)
 
         # 监听自定义事件
         self.ListenForEvent(Const.modName, Const.clientSystemName, Const.clientClickButtonEvent,
@@ -55,6 +57,10 @@ class Server(ServerSystem):
 
     def ui_finished(self, data):
         pass
+
+    def chat(self, data):  # 测试指令
+        txt = data['message']
+        player = data['playerId']
 
     def on_click(self, data):
         player = data.get("player".encode)
