@@ -27,7 +27,7 @@ class Server(ServerSystem):
         # todo 注册自定义事件，根据需要重写或删除
         # 监听系统事件
         self.ListenForEvent(serverApi.GetEngineNamespace(), serverApi.GetEngineSystemName(),
-                            "AddServerPlayerEvent", self, self.add_player)
+                            "ClientLoadAddonsFinishServerEvent", self, self.add_player)
         self.ListenForEvent(serverApi.GetEngineNamespace(), serverApi.GetEngineSystemName(),
                             "OnScriptTickServer", self, self.tick)
         self.ListenForEvent(serverApi.GetEngineNamespace(), serverApi.GetEngineSystemName(),
@@ -50,7 +50,7 @@ class Server(ServerSystem):
         self.__queue.tick()
 
     def add_player(self, data):
-        player_id = data.get("id", "-1")
+        player_id = data.get("playerId", "-1")
         if player_id == "-1":
             return
         self.__playerIdList.append(player_id)
