@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 import client.extraClientApi as clientApi
 from DemoScripts import logger
-from DemoScripts.modClient.utils.taskQueue import TaskQueue
 from DemoScripts.modCommon.config.const import Const
 
 ClientSystem = clientApi.GetClientSystemCls()
@@ -15,8 +14,6 @@ class Client(ClientSystem):
         self.__playerId = clientApi.GetLocalPlayerId()
         self.__levelId = clientApi.GetLevelId()
         self.__current_ui = None
-
-        self.__queue = TaskQueue()
 
         self.listen_event()
 
@@ -39,7 +36,6 @@ class Client(ClientSystem):
         key = data.get("key")
         is_down = data.get("isDown")
         if key == '90' and is_down == '1':  # 按下Z键
-            # self.__current_ui.on_common_click({})
             pass
 
     def ui_finished(self, data):
@@ -49,18 +45,11 @@ class Client(ClientSystem):
             clientApi.CreateUI(Const.modName, key, {"isHud": 1})
 
         self.__current_ui = clientApi.GetUI(Const.modName, Const.demoUIKey)  # 获取UI实例
-        if self.__current_ui:
-            self.__current_ui.init(self)
-            data = self.CreateEventData()
-            data["player_id"] = self.__playerId
-            self.NotifyToServer(Const.clientUIFinishedEvent, data)
-        else:
-            logger.error("————!! 创建UI失败 !!————")
+        self.__current_ui.init(self)
+        self.NotifyToServer(Const.clientUIFinishedEvent, {'player_id': self.__playerId})
 
     def tick(self):
-        self.__queue.tick()
-        if self.__current_ui:
-            self.__current_ui.tick()
+        pass
 
     def on_carried_new_item(self, data):
         pass

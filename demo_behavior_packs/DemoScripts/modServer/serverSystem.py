@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
-import mod.server.extraServerApi as serverApi
+import server.extraServerApi as serverApi
 from DemoScripts import logger
-from DemoScripts.modServer.utils.taskQueue import TaskQueue
 from DemoScripts.modServer.item.itemManager import ItemManager
 from DemoScripts.modCommon.config.const import Const
 
@@ -16,7 +15,6 @@ class Server(ServerSystem):
 
         self.__playerIdList = []
         self.__levelId = serverApi.GetLevelId()
-        self.__queue = TaskQueue()
 
         self.item_manager = ItemManager(self)  # 一个用于管理物品功能的实例
 
@@ -47,7 +45,7 @@ class Server(ServerSystem):
         pass
 
     def tick(self):
-        self.__queue.tick()
+        pass
 
     def add_player(self, data):
         player_id = data.get("playerId", "-1")

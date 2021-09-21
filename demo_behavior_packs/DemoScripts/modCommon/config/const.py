@@ -6,7 +6,7 @@ class Const(object):
     modName = "HolyDemo"
 
     modVersion = "0.0.1"
-    minecraft = "Minecraft"
+    mc = "Minecraft"
 
     # Server System
     serverSystemName = modName + "ServerSystem"
